@@ -17,16 +17,9 @@ export default defineConfig({
       options: {
         variants: [
           {
-            src: ["./src/assets/fonts/Pretendard-Regular.woff2"],
-            weight: 400,
+            weight: "100 900",
             style: "normal",
-            display: "swap",
-          },
-          {
-            src: ["./src/assets/fonts/Pretendard-Bold.woff2"],
-            weight: 700,
-            style: "normal",
-            display: "swap",
+            src: ["./src/assets/fonts/PretendardVariable.woff2"],
           },
         ],
       },
