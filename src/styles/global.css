@@ -38,6 +38,7 @@ main {
   max-width: calc(100% - 2em);
   margin: auto;
   padding: 3em 1em;
+  transition: padding 100ms ease-in-out;
 }
 
 h1,
@@ -118,7 +119,7 @@ blockquote {
 }
 hr {
   border: none;
-  border-top: 2px solid rgb(var(--gray-light));
+  border-top: 1px solid rgb(var(--gray-light));
 }
 @media (max-width: 720px) {
   body {
