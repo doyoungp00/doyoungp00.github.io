@@ -7,11 +7,13 @@ import SocialLinks from "./SocialLinks.astro";
 
 <header>
   <nav>
-    <h2><a href="/">{SITE_TITLE}</a></h2>
-    <div class="internal-links">
-      <HeaderLink href=`/${paths.root.url}`>{paths.root.name}</HeaderLink>
-      <HeaderLink href=`/${paths.posts.url}`>{paths.posts.name}</HeaderLink>
-      <HeaderLink href=`/${paths.about.url}`>{paths.about.name}</HeaderLink>
+    <div class="nav-group">
+      <a href="/" class="title">{SITE_TITLE}</a>
+      <div class="internal-links">
+        <HeaderLink href=`/${paths.root.url}`>{paths.root.name}</HeaderLink>
+        <HeaderLink href=`/${paths.posts.url}`>{paths.posts.name}</HeaderLink>
+        <HeaderLink href=`/${paths.about.url}`>{paths.about.name}</HeaderLink>
+      </div>
     </div>
     <SocialLinks height="24px" />
   </nav>
@@ -23,31 +25,53 @@ import SocialLinks from "./SocialLinks.astro";
     background: white;
     box-shadow: 0 2px 8px rgba(var(--black), 5%);
   }
-  h2 {
-    margin: 0;
-    font-size: 1em;
-  }
-
-  h2 a,
-  h2 a.active {
-    text-decoration: none;
-  }
   nav {
-    height: 3em;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
   nav a {
+    height: 100%;
     line-height: 1.5;
-    padding: 0.75em;
-    color: var(--black);
+    color: rgb(var(--black));
     border-bottom: 3px solid transparent;
     text-decoration: none;
   }
   nav a.active {
     text-decoration: none;
     border-bottom-color: var(--accent);
+  }
+  .nav-group {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    gap: 12px;
+  }
+  .title {
+    display: flex;
+    align-items: center;
+    max-width: 200px;
+    font-weight: 300;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: max-width 200ms ease-in-out;
+    margin: 0px;
+  }
+  @media (max-width: 540px) {
+    .title {
+      max-width: 0px;
+      padding: 0;
+    }
+  }
+  .internal-links {
+    height: calc(100% - 3px);
+    display: flex;
+    align-items: flex-start;
+    a {
+      padding: 0px 0.75rem;
+    }
   }
   .social-links,
   .social-links a {
