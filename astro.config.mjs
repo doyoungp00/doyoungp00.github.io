@@ -14,6 +14,7 @@ export default defineConfig({
       name: "Pretendard",
       cssVariable: "--font-pretendard",
       fallbacks: ["sans-serif"],
+      display: "swap",
       options: {
         variants: [
           {
