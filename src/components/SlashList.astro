@@ -1,0 +1,32 @@
+---
+interface Props {
+  items: string[];
+}
+
+const { items } = Astro.props;
+---
+
+<span class="slash-list">
+  {
+    items.map((item, index) => (
+      <>
+        <span class="item">{item}</span>
+        {index < items.length - 1 && <span class="separator">/</span>}
+      </>
+    ))
+  }
+</span>
+
+<style>
+  .slash-list {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .separator {
+    display: inline-block;
+    margin: 0 0.25rem;
+    font-weight: 200;
+    color: var(--gray-light);
+  }
+</style>
