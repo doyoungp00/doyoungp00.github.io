@@ -23,6 +23,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
           flex-basis: 50%;
           font-size: 1.4rem;
           margin: 12px 0px;
+          padding-right: 8px;
         }
         .row {
           display: flex;
@@ -31,9 +32,14 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
           justify-content: center;
           text-align: right;
           font-size: 14px;
+          padding-right: 8px;
           a {
             color: inherit;
             text-decoration: dotted underline;
+            transition: color 200ms ease-in-out;
+          }
+          a:hover {
+            color: var(--accent);
           }
         }
       }
@@ -94,7 +100,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
     <Header />
     <main>
       <article>
-        <h1 style="font-weight: 500;">Doyoung Park</h1>
+        <h1 style="font-weight: 400;">Doyoung Park</h1>
         <div class="header-block">
           <p style="font-weight: 200;">Junior Developer</p>
           <div class="row">
