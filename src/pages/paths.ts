@@ -4,6 +4,8 @@ export interface PathEntry {
 }
 
 const paths = {
+  root: { name: "Home", url: "" },
+  about: { name: "About Me", url: "about" },
   posts: { name: "Posts", url: "posts" },
 } as const satisfies Record<string, PathEntry>;
 

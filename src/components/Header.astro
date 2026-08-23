@@ -9,9 +9,9 @@ import SocialLinks from "./SocialLinks.astro";
   <nav>
     <h2><a href="/">{SITE_TITLE}</a></h2>
     <div class="internal-links">
-      <HeaderLink href="/">Home</HeaderLink>
+      <HeaderLink href=`/${paths.root.url}`>{paths.root.name}</HeaderLink>
       <HeaderLink href=`/${paths.posts.url}`>{paths.posts.name}</HeaderLink>
-      <HeaderLink href="/about">About</HeaderLink>
+      <HeaderLink href=`/${paths.about.url}`>{paths.about.name}</HeaderLink>
     </div>
     <SocialLinks height="24px" />
   </nav>
