@@ -13,12 +13,16 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
       h1 {
         font-size: 2rem;
       }
+      hr {
+        margin: 24px 0px;
+      }
       .header-block {
         display: flex;
         width: 100%;
         p {
           flex-basis: 50%;
           font-size: 1.4rem;
+          margin: 12px 0px;
         }
         .row {
           display: flex;
@@ -26,34 +30,61 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
           flex-basis: 50%;
           justify-content: center;
           text-align: right;
-          font-size: 16px;
+          font-size: 14px;
+          a {
+            color: inherit;
+            text-decoration: dotted underline;
+          }
         }
       }
       .section {
-        margin-top: 36px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
         h1 {
           font-size: 1.4rem;
           font-weight: 500;
-          margin-bottom: 1.5rem;
+          margin: 0px;
         }
         table {
           width: 100%;
           table-layout: fixed;
-          margin-left: 1rem;
+          margin-left: 16px;
         }
         td:first-child {
           width: min-content;
           white-space: nowrap;
-          padding-right: 2rem;
+          padding-right: 32px;
           font-weight: 500;
+        }
+        p {
+          margin: 0px;
+        }
+        ul {
+          margin: 0px;
+          padding-left: 2rem;
         }
       }
       .subsection {
-        margin-left: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-left: 16px;
+        margin-bottom: 16px;
         h1 {
-          font-size: 1.2rem;
+          font-size: 1.25rem;
           font-weight: 400;
-          margin-bottom: 1rem;
+          margin: 0px;
+          span {
+            color: gray;
+            font-size: 1rem;
+            margin-left: 32px;
+            display: inline-flex;
+            align-items: flex-end;
+          }
+        }
+        a {
+          font-size: 0.8rem;
         }
       }
     </style>
@@ -63,15 +94,19 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
     <Header />
     <main>
       <article>
-        <h1>Doyoung Park</h1>
+        <h1 style="font-weight: 500;">Doyoung Park</h1>
         <div class="header-block">
-          <p>Junior Developer</p>
+          <p style="font-weight: 200;">Junior Developer</p>
           <div class="row">
-            <span>doyoungp.00@gmail.com</span>
-            <span>Suwon, South Korea</span>
+            <span>
+              <a href="mailto:doyoungp.00@gmail.com">doyoungp.00@gmail.com </a>
+            </span>
+            <span>Seongnam, South Korea</span>
           </div>
         </div>
+
         <hr />
+
         <div class="section">
           <h1>Technical Skills</h1>
           <table>
@@ -101,11 +136,109 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
             </tbody>
           </table>
         </div>
+
+        <hr />
+
         <div class="section">
           <h1>Projects</h1>
           <div class="subsection">
             <h1>Mobile App Development</h1>
+            <a href="https://github.com/doyoungp00/FindPill"
+              >github.com/doyoungp00/FindPill</a
+            >
+            <p>A pill identifying app built on React Native.</p>
+            <ul>
+              <li>Role: Team Leader</li>
+              <li>Developed the frontend application.</li>
+              <li>
+                Designed the system architecture with Firebase and Azure Custom
+                Vision to handle events in real-time and allow scalability.
+              </li>
+            </ul>
           </div>
+          <div class="subsection">
+            <h1>Mobile Web Development</h1>
+            <a href="https://github.com/TEAM-PIN-UP/FE-PIN-UP"
+              >github.com/TEAM-PIN-UP/FE-PIN-UP</a
+            >
+            <p>A friends-only restaurant review service.</p>
+            <ul>
+              <li>Role: Frontend Development</li>
+              <li>
+                Learned to collaborate with the Design and Backend teams,
+                implementing design and functional features.
+              </li>
+              <li>
+                Built the complex main map interface using Naver Maps and Kakao
+                Maps API.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h1>Work Experience</h1>
+          <div class="subsection">
+            <h1>
+              NexpotSolution
+              <span>Apr 2025 — CURRENT</span>
+            </h1>
+            <ul>
+              <li>Maintained a legacy product authentication web app.</li>
+              <li>
+                Developed MV-PDF, a raster image processing(RIP) program to
+                accelerate in-house variable data printing jobs.
+              </li>
+              <li>
+                MV-PDF reduced processing times by up to 98 percent,
+                accelerating a two-hour job down to three minutes.
+              </li>
+              <li>
+                Played a pivotal role in the signing of an MOU between SEIKO
+                EPSON and NexpotSolution through the MV-PDF project.
+              </li>
+            </ul>
+          </div>
+          <div class="subsection">
+            <h1>
+              H2CTLAB
+              <span>Summer Intern 2023</span>
+            </h1>
+            <ul>
+              <li>Joined a team of developers for a digital art exhibition.</li>
+              <li>Created a mobile web app for visitors to submit sketches.</li>
+              <li>
+                Contributed to the project further by developing Unity scripts
+                and the backend system to process and create art forms from
+                submitted sketches.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h1>Education</h1>
+          <div class="subsection">
+            <h1>
+              Software Engineering, Chonnam National Univ.
+              <span>Mar 2019 — Feb 2025</span>
+            </h1>
+            <p>Graduating GPA: 4.2 out of 4.5</p>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h1>Natural Languages</h1>
+          <ul>
+            <li>English - Full professional proficiency</li>
+            <li>Korean - Native</li>
+          </ul>
         </div>
       </article>
     </main>
