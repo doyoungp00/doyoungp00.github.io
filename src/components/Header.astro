@@ -1,5 +1,6 @@
 ---
 import { SITE_TITLE } from "../consts";
+import paths from "../pages/paths";
 import HeaderLink from "./HeaderLink.astro";
 ---
 
@@ -8,7 +9,7 @@ import HeaderLink from "./HeaderLink.astro";
     <h2><a href="/">{SITE_TITLE}</a></h2>
     <div class="internal-links">
       <HeaderLink href="/">Home</HeaderLink>
-      <HeaderLink href="/blog">Blog</HeaderLink>
+      <HeaderLink href=`/${paths.posts.url}`>{paths.posts.name}</HeaderLink>
       <HeaderLink href="/about">About</HeaderLink>
     </div>
     <div class="social-links">
