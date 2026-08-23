@@ -15,7 +15,10 @@
   --box-shadow:
     0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
     0 16px 32px rgba(var(--gray), 33%);
+
+  font-size: 100%;
 }
+
 body {
   font-family: var(--font-pretendard);
   margin: 0;
@@ -26,15 +29,17 @@ body {
   word-wrap: break-word;
   overflow-wrap: break-word;
   color: rgb(var(--gray-dark));
-  font-size: 20px;
-  line-height: 1.7;
+  font-size: 1.125rem;
+  line-height: 1.8rem;
 }
+
 main {
   width: 720px;
   max-width: calc(100% - 2em);
   margin: auto;
   padding: 3em 1em;
 }
+
 h1,
 h2,
 h3,
@@ -60,6 +65,7 @@ h4 {
 h5 {
   font-size: 1.25em;
 }
+
 strong,
 b {
   font-weight: 700;
@@ -122,6 +128,7 @@ hr {
   }
 }
 
+/* Visible to screen reader only */
 .sr-only {
   border: 0;
   padding: 0;
