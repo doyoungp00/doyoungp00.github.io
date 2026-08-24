@@ -51,21 +51,31 @@ h6 {
   margin: 0 0 0.5rem 0;
   color: rgb(var(--black));
   line-height: 1.2;
+  font-weight: 300;
 }
 h1 {
-  font-size: 3.052rem;
+  font-size: 2rem;
+  font-weight: 500;
 }
 h2 {
-  font-size: 2.441rem;
+  font-size: 1.85rem;
+  font-weight: 500;
 }
 h3 {
-  font-size: 1.953rem;
+  font-size: 1.7rem;
+  font-weight: 400;
 }
 h4 {
-  font-size: 1.563rem;
+  font-size: 1.55rem;
+  font-weight: 400;
 }
 h5 {
+  font-size: 1.4rem;
+  font-weight: 300;
+}
+h6 {
   font-size: 1.25rem;
+  font-weight: 300;
 }
 
 strong,
