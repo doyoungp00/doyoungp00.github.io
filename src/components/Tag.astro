@@ -1,0 +1,14 @@
+---
+const { name } = Astro.props;
+---
+
+<span class="tag">
+  {name}
+</span>
+<style>
+  .tag {
+    color: rgb(var(--gray));
+    cursor: pointer;
+    text-decoration: dotted underline;
+  }
+</style>
