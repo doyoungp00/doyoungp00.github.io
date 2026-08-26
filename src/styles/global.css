@@ -150,6 +150,14 @@ hr {
     padding: 1em;
   }
 }
+th,
+td {
+  padding: 4px 8px;
+}
+
+/* 
+  Class definitions
+*/
 
 /* Visible to screen reader only */
 .sr-only {
@@ -168,4 +176,36 @@ hr {
   clip-path: inset(50%);
   /* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
   white-space: nowrap;
+}
+
+/* 3-column div (becomes 2-column and 1-column in smaller screens) */
+.col-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+@media (max-width: 640px) {
+  .col-3 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 420px) {
+  .col-3 {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* 2-column div (becomes 1-column in smaller screens) */
+.col-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+@media (max-width: 540px) {
+  .col-2 {
+    display: flex;
+    flex-direction: column;
+  }
 }

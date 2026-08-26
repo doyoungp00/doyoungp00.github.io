@@ -1,0 +1,36 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"img">;
+
+const { alt, ...props } = Astro.props;
+---
+
+<figure class="imagecaption">
+  <img class="imagecaption-img" alt={alt} {...props} />
+  {
+    alt && (
+      <figcaption class="imagecaption-figc" aria-hidden="true">
+        {alt}
+      </figcaption>
+    )
+  }
+</figure>
+
+<script>
+  document.querySelectorAll(".imagecaption-img").forEach((img) => {
+    img.addEventListener("error", () => {
+      img.parentElement?.querySelector(".imagecaption-figc")?.remove();
+    });
+  });
+</script>
+
+<style>
+  .imagecaption {
+    margin: 0;
+  }
+  .imagecaption-figc {
+    color: rgb(var(--gray));
+    font-size: 0.8rem;
+  }
+</style>
