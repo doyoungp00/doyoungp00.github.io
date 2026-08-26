@@ -120,12 +120,16 @@ img {
   border-radius: 8px;
 }
 code {
+  font-family: var(--font-d2coding);
   font-size: 1rem;
+  font-weight: 400;
   padding: 2px 5px;
   background-color: rgb(var(--gray-light));
   border-radius: 2px;
 }
 pre {
+  font-family: var(--font-d2coding);
+  font-weight: 400;
   padding: 1.5em;
   border-radius: 8px;
 }

@@ -18,9 +18,25 @@ export default defineConfig({
       options: {
         variants: [
           {
+            src: ["./src/assets/fonts/PretendardVariable.woff2"],
             weight: "100 900",
             style: "normal",
-            src: ["./src/assets/fonts/PretendardVariable.woff2"],
+          },
+        ],
+      },
+    },
+    {
+      provider: fontProviders.local(),
+      name: "D2Coding",
+      cssVariable: "--font-d2coding",
+      fallbacks: ["monospace"],
+      display: "swap",
+      options: {
+        variants: [
+          {
+            src: ["./src/assets/fonts/D2Coding-Ver1.3.3-20260725-ligature.ttf"],
+            weight: "normal",
+            style: "normal",
           },
         ],
       },
