@@ -1,5 +1,6 @@
 ---
 import BaseHead from "@/components/BaseHead.astro";
+import CertCard from "@/components/CertCard.astro";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
 import SlashList from "@/components/SlashList.astro";
@@ -211,6 +212,28 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
               </li>
             </ul>
           </div>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h4>Certifications</h4>
+          <CertCard
+            title="AWS Certified Solutions Architect - Associate"
+            organization="Amazon Web Services"
+            year="2026"
+            viewUrl="https://www.credly.com/badges/902ab9c4-ddb7-4f42-8162-327131e3d22e"
+          />
+          <CertCard
+            title="Computer Skills Proficiency, Level 1 (컴퓨터활용능력 1급)"
+            organization="Korea Chamber of Commerce and Industry (KCCI)"
+            year="2022"
+          />
+          <CertCard
+            title="Linux Master, Level 2 (리눅스마스터 2급)"
+            organization="Korea Information and Communications Promotion Association (KICA)"
+            year="2019"
+          />
         </div>
 
         <hr />

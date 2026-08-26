@@ -1,0 +1,59 @@
+---
+interface Props {
+  title: string;
+  organization: string;
+  year: string;
+  viewUrl?: string;
+}
+const { title, organization, year, viewUrl } = Astro.props;
+---
+
+<div class="cert-card">
+  <span class="cert-title">{title}</span>
+  <span>
+    <span class="cert-org">{organization} </span>
+    <span class="cert-year">{year}</span>
+  </span>
+  {
+    viewUrl && (
+      <span class="cert-view">
+        <a href={viewUrl} target="_blank">
+          View credential ↗
+        </a>
+      </span>
+    )
+  }
+</div>
+<style>
+  .cert-card {
+    display: flex;
+    flex-direction: column;
+    border-left: 3px solid rgb(var(--gray));
+    line-height: 1.2;
+    gap: 8px;
+    padding: 4px 12px;
+    margin-bottom: 1rem;
+  }
+  .cert-title {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .cert-org {
+    font-size: 14px;
+    font-style: italic;
+  }
+  .cert-year::before {
+    content: "·";
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0 4px;
+  }
+  .cert-year {
+    font-size: 16px;
+  }
+  .cert-view a {
+    color: rgb(var(--gray));
+    font-size: 13px;
+    text-decoration: dotted underline;
+  }
+</style>
