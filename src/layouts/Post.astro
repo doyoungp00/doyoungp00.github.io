@@ -41,8 +41,9 @@ const { title, description, pubDate, updatedDate, heroImage, tags } =
         line-height: 1.5;
       }
       .date {
-        margin-bottom: var(--space-4);
         color: rgb(var(--gray));
+        font-size: 15px;
+        margin-bottom: var(--space-4);
       }
       .last-updated-on {
         font-style: italic;
@@ -73,7 +74,7 @@ const { title, description, pubDate, updatedDate, heroImage, tags } =
         }
         <div class="prose">
           <div class="title">
-            <h3>{title}</h3>
+            <h4>{title}</h4>
             <div class="date">
               <FormattedDate date={pubDate} />
               {
