@@ -1,7 +1,7 @@
+import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
+import paths from "@/pages/paths";
 import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
-import paths from "./paths";
 
 export async function GET(context) {
   const posts = await getCollection(paths.posts.url);
