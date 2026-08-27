@@ -34,7 +34,9 @@ export default defineConfig({
       options: {
         variants: [
           {
-            src: ["./src/assets/fonts/D2Coding-Ver1.3.3-20260725-ligature.ttf"],
+            src: [
+              "./src/assets/fonts/D2Coding-Ver1.3.3-20260725-ligature.woff2",
+            ],
             weight: "normal",
             style: "normal",
           },
