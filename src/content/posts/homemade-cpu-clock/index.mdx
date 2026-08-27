@@ -12,11 +12,18 @@ import ImageCaption from "@/components/ImageCaption.astro";
 
 The clock is one of the most basic yet important components of a CPU. Every action a CPU takes will be based on a clock pulse. A clock's job is to generate a pulse every set period, forming a square wave pattern.
 
-![A square wave under an oscilloscope.](./square-wave.png)
+import squareWave from "./square-wave.png";
+
+<ImageCaption src={squareWave.src} alt="A square wave under an oscilloscope." />
 
 The 555 Timer IC chip is designed for this exact purpose. Released in 1972 and still widely used in various applications, the basic mechanism is made of resistors and a capacitor.
 
-![The internal diagram of a 555 chip.](./555-internals.png)
+import internals555 from "./555-internals.png";
+
+<ImageCaption
+  src={internals555.src}
+  alt="The internal diagram of a 555 timer."
+/>
 
 The 555 offers a variable frequency. As the chip works by continuously charging then discharging a capacitor, the pulse frequency can be adjusted by the using different resistors and capacitors.
 
@@ -70,7 +77,9 @@ A bistable clock has two stable states, and is comfortable with staying either h
 
 The SR latch in the timer will be used.
 
-![The SR latch inside the 555 timer.](./555-latch.png)
+import latch555 from "./555-latch.png";
+
+<ImageCaption src={latch555.src} alt="The SR latch inside the 555 timer." />
 
 ![The assembled bistable clock.](./clock-4.jpg)
 
