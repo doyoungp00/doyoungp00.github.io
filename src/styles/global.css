@@ -125,7 +125,8 @@ code {
   font-weight: 400;
   padding: 2px 5px;
   background-color: rgb(var(--gray-light));
-  border-radius: 2px;
+  border: 1px solid rgba(var(--gray), 30%);
+  border-radius: 4px;
 }
 pre {
   font-family: var(--font-d2coding);
@@ -157,6 +158,9 @@ hr {
 th,
 td {
   padding: 4px 8px;
+}
+td p {
+  margin: 0;
 }
 
 /* 

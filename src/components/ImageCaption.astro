@@ -27,10 +27,14 @@ const { alt, ...props } = Astro.props;
 
 <style>
   .imagecaption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 0;
   }
   .imagecaption-figc {
     color: rgb(var(--gray));
-    font-size: 12px;
+    font-size: 15px;
+    text-align: center;
   }
 </style>
