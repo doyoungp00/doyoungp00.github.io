@@ -1,17 +1,19 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<"img">;
+interface Props extends HTMLAttributes<"img"> {
+  caption?: string;
+}
 
-const { alt, ...props } = Astro.props;
+const { caption, alt, ...props } = Astro.props;
 ---
 
 <figure class="imagecaption">
   <img class="imagecaption-img" alt={alt} {...props} />
   {
-    alt && (
+    (caption || alt) && (
       <figcaption class="imagecaption-figc" aria-hidden="true">
-        {alt}
+        {caption ?? alt}
       </figcaption>
     )
   }
@@ -36,5 +38,6 @@ const { alt, ...props } = Astro.props;
     color: rgb(var(--gray));
     font-size: 15px;
     text-align: center;
+    margin-top: 6px;
   }
 </style>
