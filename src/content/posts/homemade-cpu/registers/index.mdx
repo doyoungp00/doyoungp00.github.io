@@ -6,8 +6,8 @@ heroImage: "./reg-1.jpg"
 tags: ["projects", "homemade-cpu"]
 ---
 
-import { Image } from "astro:assets";
 import ImageCaption from "@/components/ImageCaption.astro";
+import { Image } from "astro:assets";
 
 ![Assembled registers.](./reg-1.jpg)
 
@@ -16,8 +16,8 @@ Specific registers exist for instructions, data, and addresses. For all other us
 
 #### 4-bit registers
 
-import ls173 from "./74LS173.jpg";
 import ls173Pinout from "./74LS173-pinout.png";
+import ls173 from "./74LS173.jpg";
 
 <div class="col-2">
   <Image
@@ -46,7 +46,7 @@ In this case a control mechanism will decide if the register values are uploaded
 import ls245 from "./74LS245.png";
 
 <ImageCaption
-  src={ls245.src}
+  src={ls245}
   alt="Logical diagram of the 74LS245 Octal Bus Transciever."
   style="max-height: 320px;"
 />

@@ -14,16 +14,13 @@ The clock is one of the most basic yet important components of a CPU. Every acti
 
 import squareWave from "./square-wave.png";
 
-<ImageCaption src={squareWave.src} alt="A square wave under an oscilloscope." />
+<ImageCaption src={squareWave} alt="A square wave under an oscilloscope." />
 
 The 555 Timer IC chip is designed for this exact purpose. Released in 1972 and still widely used in various applications, the basic mechanism is made of resistors and a capacitor.
 
 import internals555 from "./555-internals.png";
 
-<ImageCaption
-  src={internals555.src}
-  alt="The internal diagram of a 555 timer."
-/>
+<ImageCaption src={internals555} alt="The internal diagram of a 555 timer." />
 
 The 555 offers a variable frequency. As the chip works by continuously charging then discharging a capacitor, the pulse frequency can be adjusted by the using different resistors and capacitors.
 
@@ -79,7 +76,7 @@ The SR latch in the timer will be used.
 
 import latch555 from "./555-latch.png";
 
-<ImageCaption src={latch555.src} alt="The SR latch inside the 555 timer." />
+<ImageCaption src={latch555} alt="The SR latch inside the 555 timer." />
 
 ![The assembled bistable clock.](./clock-4.jpg)
 
@@ -93,18 +90,9 @@ import ls08 from "./74LS08.png";
 import ls32 from "./74LS32.png";
 
 <div class="col-2" style="align-items: end;">
-  <ImageCaption
-    src={ls04.src}
-    alt="Logical diagram of the 74LS04 Hex Inverter."
-  />
-  <ImageCaption
-    src={ls08.src}
-    alt="Logical diagram of the 74LS08 Quad AND Gate."
-  />
-  <ImageCaption
-    src={ls32.src}
-    alt="Logical diagram of the 74LS32 Quad OR Gate."
-  />
+  <ImageCaption src={ls04} alt="Logical diagram of the 74LS04 Hex Inverter." />
+  <ImageCaption src={ls08} alt="Logical diagram of the 74LS08 Quad AND Gate." />
+  <ImageCaption src={ls32} alt="Logical diagram of the 74LS32 Quad OR Gate." />
 </div>
 
 ![Logical diagram overview of the full clock assembly.](./clock-5.png)

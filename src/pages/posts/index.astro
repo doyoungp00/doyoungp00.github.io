@@ -105,7 +105,7 @@ const posts = (await getCollection(paths.posts.url)).sort(
                 <a href={`/${paths.posts.url}/${post.id}/`}>
                   {post.data.heroImage && (
                     <div class="thumbnail">
-                      <ImageWithBackground src={post.data.heroImage.src} />
+                      <ImageWithBackground src={post.data.heroImage} />
                     </div>
                   )}
                   <h5 class="title">{post.data.title}</h5>

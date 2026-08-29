@@ -6,8 +6,8 @@ heroImage: "./ram-1.jpg"
 tags: ["projects", "homemade-cpu"]
 ---
 
-import { Image } from "astro:assets";
 import ImageCaption from "@/components/ImageCaption.astro";
+import { Image } from "astro:assets";
 
 The random access memory(RAM) guarantees a constant access time for any memory address. Two 74LS189 RAM chips, each giving 16 words of 4-bit memory, are used to create 16 bytes of RAM. This is the maximum possible amount of memory possible, due to the CPU architecture only using the lower 4 bits for addresses.
 
@@ -18,7 +18,7 @@ The RAM modules are placed on the left, with two inverters on the right as the R
 import ls189 from "./74LS189.png";
 
 <ImageCaption
-  src={ls189.src}
+  src={ls189}
   alt="Diagram of the 74LS189 RAM chip."
   style="max-height: 240px"
 />
@@ -28,7 +28,7 @@ Pin 2 is called Chip Select, enabling the output when set to low. In this case i
 import ram3 from "./ram-3.jpg";
 
 <ImageCaption
-  src={ram3.src}
+  src={ram3}
   alt="Image of the test RAM setup."
   caption="The test RAM setup."
 />
@@ -38,7 +38,7 @@ Yellow jumper lines have been temporarily used to set the read/write address and
 import ram4 from "./ram-4.jpg";
 
 <ImageCaption
-  src={ram4.src}
+  src={ram4}
   alt="Image of the RAM module with the clock."
   caption="The RAM module with the clock."
 />
@@ -48,7 +48,7 @@ Above the RAM, a DIP switch and 4-bit D register (previously used in the ALU) is
 import ram5 from "./ram-5.jpg";
 
 <ImageCaption
-  src={ram5.src}
+  src={ram5}
   alt="Image of the RAM module with the clock, with address inputs betwen."
   caption="The RAM module with the clock, with address inputs betwen."
 />
@@ -58,7 +58,7 @@ A switch is added to select the address mode, with LEDs to indicate the current 
 import ram6 from "./ram-6.jpg";
 
 <ImageCaption
-  src={ram6.src}
+  src={ram6}
   alt="Image of the RAM value input module added below the RAM module."
   caption="The RAM value input module added below the RAM module."
 />

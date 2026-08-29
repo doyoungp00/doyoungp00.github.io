@@ -6,8 +6,8 @@ heroImage: "./alu-1.jpg"
 tags: ["projects", "homemade-cpu"]
 ---
 
-import { Image } from "astro:assets";
 import ImageCaption from "@/components/ImageCaption.astro";
+import { Image } from "astro:assets";
 
 The Arithmetic and Logic Unit(ALU) of the CPU is where the actual calculations happen. Their most basic function is addition, done by adders. Each adder handles addition of only one digit.
 
@@ -31,7 +31,7 @@ It _is_ possible to chain eight adders together for an 8-bit adder. However, the
 import ls283 from "./74LS283.png";
 
 <ImageCaption
-  src={ls283.src}
+  src={ls283}
   alt="Diagram of the 74LS283 4-bit ALU."
   style="max-height: 320px;"
 />
