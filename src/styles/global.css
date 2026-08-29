@@ -12,9 +12,7 @@
   --gray-light: 229, 233, 240;
   --gray-dark: 34, 41, 57;
   --gray-gradient: rgba(var(--gray-light), 50%), #fff;
-  --box-shadow:
-    0 2px 6px rgba(var(--gray), 12%), 0 8px 24px rgba(var(--gray), 12%),
-    0 16px 32px rgba(var(--gray), 12%);
+  --box-shadow: 0 6px 12px 6px rgba(var(--gray), 15%);
 
   --space-1: 0.25rem;
   --space-2: 0.5rem;

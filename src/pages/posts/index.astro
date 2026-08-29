@@ -3,9 +3,9 @@ import BaseHead from "@/components/BaseHead.astro";
 import Footer from "@/components/Footer.astro";
 import FormattedDate from "@/components/FormattedDate.astro";
 import Header from "@/components/Header.astro";
+import ImageWithBackground from "@/components/ImageWithBackground.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
 import paths from "@/pages/paths";
-import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
 const posts = (await getCollection(paths.posts.url)).sort(
@@ -20,11 +20,12 @@ const posts = (await getCollection(paths.posts.url)).sort(
     <style>
       main {
         width: 960px;
+        margin: 0 auto;
       }
       ul {
         display: flex;
         flex-wrap: wrap;
-        gap: 2rem;
+        gap: 1.5rem;
         list-style-type: none;
         margin: 0;
         padding: 0;
@@ -41,15 +42,17 @@ const posts = (await getCollection(paths.posts.url)).sort(
         margin-bottom: 1rem;
         text-align: center;
       }
-      ul li:first-child img {
+      ul li:first-child .thumbnail {
+        aspect-ratio: 21/9;
+      }
+      ul li .thumbnail {
         width: 100%;
-      }
-      ul li:first-child .title {
-        font-size: 2.369rem;
-      }
-      ul li img {
-        margin-bottom: 0.5rem;
+        display: block;
+        aspect-ratio: 16/9;
+        overflow: hidden;
+        margin: 0 auto;
         border-radius: 12px;
+        margin-bottom: 0.5rem;
       }
       ul li a {
         display: block;
@@ -57,32 +60,36 @@ const posts = (await getCollection(paths.posts.url)).sort(
       .title {
         margin: 0;
         color: rgb(var(--black));
-        line-height: 1;
+        line-height: 1.4;
       }
       .date {
         margin: 0;
         color: rgb(var(--gray));
       }
-      ul li a:hover h4,
+      ul li a:hover .title,
       ul li a:hover .date {
         color: rgb(var(--accent));
       }
-      ul a:hover img {
+      ul a:hover .thumbnail {
         box-shadow: var(--box-shadow);
       }
       @media (max-width: 720px) {
+        main {
+          width: 480px;
+        }
         ul {
-          gap: 0.5em;
+          gap: 0.75em;
         }
         ul li {
           width: 100%;
-          text-align: center;
+          text-align: start;
         }
         ul li:first-child {
           margin-bottom: 0;
+          text-align: start;
         }
-        ul li:first-child .title {
-          font-size: 1.563em;
+        ul li:first-child .thumbnail {
+          aspect-ratio: 16/9;
         }
       }
     </style>
@@ -97,14 +104,11 @@ const posts = (await getCollection(paths.posts.url)).sort(
               <li>
                 <a href={`/${paths.posts.url}/${post.id}/`}>
                   {post.data.heroImage && (
-                    <Image
-                      width={720}
-                      height={360}
-                      src={post.data.heroImage}
-                      alt=""
-                    />
+                    <div class="thumbnail">
+                      <ImageWithBackground src={post.data.heroImage.src} />
+                    </div>
                   )}
-                  <h4 class="title">{post.data.title}</h4>
+                  <h5 class="title">{post.data.title}</h5>
                   <p class="date">
                     <FormattedDate date={post.data.pubDate} />
                   </p>
