@@ -8,6 +8,9 @@ import { defineConfig, fontProviders } from "astro/config";
 export default defineConfig({
   site: "https://doyoungp00.github.io",
   integrations: [mdx(), sitemap()],
+  redirects: {
+    "/": "/about",
+  },
   fonts: [
     {
       provider: fontProviders.local(),
