@@ -1,10 +1,12 @@
 ---
+import { Image } from "astro:assets";
+
 const { src, alt = "", class: className = "", style = "" } = Astro.props;
 ---
 
 <div class:list={["image-container", className]} style={style}>
-  <img class="background" src={src} alt="" aria-hidden="true" />
-  <img class="foreground" src={src} alt={alt} />
+  <Image class="background" src={src} alt="" aria-hidden="true" />
+  <Image class="foreground" src={src} alt={alt} />
 </div>
 
 <style>

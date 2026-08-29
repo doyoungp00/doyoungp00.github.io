@@ -1,15 +1,16 @@
 ---
-import type { HTMLAttributes } from "astro/types";
+import type { LocalImageProps } from "astro:assets";
+import { Image } from "astro:assets";
 
-interface Props extends HTMLAttributes<"img"> {
+type Props = LocalImageProps & {
   caption?: string;
-}
+};
 
 const { caption, alt, ...props } = Astro.props;
 ---
 
 <figure class="imagecaption">
-  <img class="imagecaption-img" alt={alt} {...props} />
+  <Image class="imagecaption-img" alt={alt} {...props} />
   {
     (caption || alt) && (
       <figcaption class="imagecaption-figc" aria-hidden="true">
