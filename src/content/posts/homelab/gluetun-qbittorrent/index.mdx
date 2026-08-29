@@ -1,0 +1,187 @@
+---
+title: "qBittorrent Setup with Gluetun VPN Client"
+description: ""
+pubDate: "2026-05-02"
+heroImage: "./gluetun-thumbnail.png"
+tags:
+  [
+    "homelab",
+    "docker",
+    "docker-compose",
+    "portainer",
+    "qbittorrent",
+    "gluetun",
+    "vpn",
+  ]
+---
+
+import ImageCaption from "@/components/ImageCaption.astro";
+import { Image } from "astro:assets";
+
+#### Why use a VPN in front of qBittorrent?
+
+I consider using a VPN connection for torrenting as best practice. Even if not used for nefarious purposes, a VPN layer in front of a torrenting service has some benefits:
+
+- Hides your public IP from peers.
+- Keeps the torrenting activity less visible to the ISP. <br/>
+  The ISP only sees the VPN connection, so you may avoid any torrent-specific throttling.
+- Legal exposure <br/>
+  Sometimes copyright holders send DMCA infringement notices based on logged IPs in torrent swarms, regardless of whether or not the IP has participated in downloading and distribution.
+
+#### What is Gluetun?
+
+import gluetun from "./gluetun.svg";
+
+<div style="display: flex; justify-content: center;">
+  <Image src={gluetun} alt="Gluetun logo" height={300} />
+</div>
+
+Per the [GitHub repo](https://github.com/passteque/gluetun):
+
+> Lightweight swiss-army-knife-like VPN client to multiple VPN service providers
+
+Or in simpler terms, it lets other Docker containers route its network traffic through it. When the VPN connection is lost for some reason, it will also act as a kill switch, cutting off qBittorrent and eliminating the risk of leaking the public IP.
+
+#### Torrents, VPNs and port forwarding
+
+Port forwarding is something worth a consider. Without it, torrenting still works - only one side of a connection requires an open port to initiate. If both peers are behind a NAT, they cannot establish anything (UDP hole punching exists but is not quite reliable.)
+
+|                      | Port forwarding ON                                                    | Port forwarding OFF                    |
+| -------------------- | --------------------------------------------------------------------- | -------------------------------------- |
+| Incoming connections | <span style='color: forestgreen'>Yes</span>                           | <span style='color: crimson'>No</span> |
+| Outgoing connections | Yes                                                                   | Yes                                    |
+| Download speed       | <span style='color: forestgreen'>Better</span>                        | Good                                   |
+| Seeding              | <span style='color: forestgreen'>Better</span>                        | Limited                                |
+| Finding peers        | <span style='color: forestgreen'>More peers can connect to you</span> | Dependent on other peers               |
+
+However, many VPN providers do not support port forwarding. ProtonVPN used in this post does support it, but opens a **random** port upon request.
+
+#### Creating a stack with Gluetun and qBittorrent
+
+```yaml
+version: "3.8"
+
+services:
+  gluetun:
+    image: qmcgaw/gluetun
+    container_name: gluetun
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    ports:
+      - 8080:8080
+    volumes:
+      - /path/to/persistent/gluetun/storage:/gluetun
+    environment:
+      - VPN_SERVICE_PROVIDER=protonvpn
+      - VPN_TYPE=wireguard
+      - SERVER_COUNTRIES=Netherlands
+      - WIREGUARD_PRIVATE_KEY=
+      - WIREGUARD_ADDRESSES=10.2.0.2/32
+      - VPN_PORT_FORWARDING=on
+      - VPN_PORT_FORWARDING_PROVIDER=protonvpn
+      - VPN_PORT_FORWARDING_UP_COMMAND=/bin/sh -c 'wget -O- -nv --retry-connrefused --post-data "json={\"listen_port\":{{PORT}},\"current_network_interface\":\"{{VPN_INTERFACE}}\",\"random_port\":false,\"upnp\":false}" http://127.0.0.1:8080/api/v2/app/setPreferences'
+      - VPN_PORT_FORWARDING_DOWN_COMMAND=/bin/sh -c 'wget -O- -nv --retry-connrefused --post-data "json={\"listen_port\":0,\"current_network_interface\":\"lo\"}" http://127.0.0.1:8080/api/v2/app/setPreferences'
+      - TZ=Asia/Seoul
+      - UPDATER_PERIOD=24h
+
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "https://1.1.1.1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+    restart: unless-stopped
+
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    network_mode: "service:gluetun"
+
+    depends_on:
+      gluetun:
+        condition: service_healthy
+
+    environment:
+      - PUID=1000 # Adjust if specific user permissions are needed to access files
+      - PGID=1000
+      - TZ=Asia/Seoul
+      - WEBUI_PORT=8080
+
+    volumes:
+      - /path/to/persistent/qbittorrent/config:/config
+      - /path/to/qbittorrent/download/location:/downloads
+
+    restart: unless-stopped
+```
+
+---
+
+##### What matters in this config:
+
+```yaml
+- VPN_PORT_FORWARDING=on
+- VPN_PORT_FORWARDING_PROVIDER=protonvpn
+- VPN_PORT_FORWARDING_UP_COMMAND=/bin/sh -c 'wget -O- -nv --retry-connrefused --post-data "json={\"listen_port\":{{PORT}},\"current_network_interface\":\"{{VPN_INTERFACE}}\",\"random_port\":false,\"upnp\":false}" http://127.0.0.1:8080/api/v2/app/setPreferences'
+- VPN_PORT_FORWARDING_DOWN_COMMAND=/bin/sh -c 'wget -O- -nv --retry-connrefused --post-data "json={\"listen_port\":0,\"current_network_interface\":\"lo\"}" http://127.0.0.1:8080/api/v2/app/setPreferences'
+- TZ=Asia/Seoul
+- UPDATER_PERIOD=24h
+```
+
+###### Port forwarding
+
+After Gluetun connects to a VPN, it asks ProtonVPN to open a port. When a port is opened, Gluetun does a POST request to qBittorrent's API at `http://127.0.0.1:8080/api/v2/app/setPreferences`:
+
+```json
+{
+  "listen_port": {{PORT}},
+  "current_network_interface": "{{VPN_INTERFACE}}",
+  "random_port": false,
+  "upnp": false
+}
+```
+
+Where `{{PORT}}` is the port number ProtonVPN opened.
+
+When port forwarding goes down, the POST request is:
+
+```json
+{
+  "listen_port": 0,
+  "current_network_interface": "lo"
+}
+```
+
+Which stops qBittorrent from using the now closed port.
+
+###### Health check
+
+Gluetun also performs a health check:
+
+```yaml
+healthcheck:
+  test: ["CMD", "wget", "-q", "--spider", "https://1.1.1.1"]
+  interval: 10s
+  timeout: 5s
+  retries: 10
+```
+
+Which tests if Gluetun is able to reach the internet. If all retries fail, Gluetun is deemed unhealthy.
+
+qBittorrent is told to depend on this health check:
+
+```yaml
+depends_on:
+  gluetun:
+    condition: service_healthy
+```
+
+Which tells qBittorrent to not start until Gluetun is healthy. A health check is preferable to:
+
+```yaml
+depends_on:
+  - gluetun
+```
+
+Which only guarantees Gluetun has started, but does not guarantee that the VPN is live.
