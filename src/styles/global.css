@@ -37,7 +37,7 @@ body {
   word-wrap: break-word;
   overflow-wrap: break-word;
   color: rgb(var(--gray-dark));
-  font-size: 1.125rem;
+  font-size: 1rem;
   line-height: 1.8rem;
 }
 
@@ -86,7 +86,7 @@ h6 {
 }
 
 ul {
-  padding-left: var(--space-8);
+  padding-left: 24px;
   margin: var(--space-4) 0;
 }
 strong,
@@ -100,7 +100,7 @@ a:hover {
   color: var(--accent);
 }
 p {
-  margin-bottom: 1em;
+  margin-bottom: var(--space-4);
 }
 textarea {
   width: 100%;
@@ -111,6 +111,7 @@ input {
 }
 table {
   width: 100%;
+  margin-bottom: var(--space-4);
 }
 img {
   max-width: 100%;
@@ -136,14 +137,16 @@ pre > code {
   all: unset;
 }
 blockquote {
-  border-left: 4px solid var(--accent);
-  padding: 0 0 0 20px;
+  border-left: 3px solid var(--accent);
+  font-family: var(--font-noto-serif);
+  font-size: 1rem;
   margin: 0;
-  font-size: 1.333em;
+  padding: 0 0 0 20px;
 }
 hr {
   border: none;
-  border-top: 1px solid rgb(var(--gray-light));
+  border-top: 2px solid rgb(var(--gray-light));
+  margin: var(--space-8) 0;
 }
 @media (max-width: 720px) {
   body {

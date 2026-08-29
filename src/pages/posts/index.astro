@@ -58,13 +58,15 @@ const posts = (await getCollection(paths.posts.url)).sort(
         display: block;
       }
       .title {
-        margin: 0;
         color: rgb(var(--black));
+        font-size: 1.2rem;
         line-height: 1.4;
+        margin: 0;
       }
       .date {
-        margin: 0;
         color: rgb(var(--gray));
+        font-size: 15px;
+        margin: 0;
       }
       ul li a:hover .title,
       ul li a:hover .date {
