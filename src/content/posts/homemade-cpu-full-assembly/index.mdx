@@ -1,0 +1,46 @@
+---
+title: "Homemade 8-bit CPU [#7] - Full Assembly"
+description: ""
+pubDate: "2023-04-01"
+heroImage: "./final-2.jpg"
+tags: ["projects", "homemade-cpu"]
+---
+
+import ImageCaption from "@/components/ImageCaption.astro";
+import { Image } from "astro:assets";
+
+All modules are brought together and tied to the bus.
+
+![Image of the full CPU.](./final-1.jpg)
+
+| Left of Bus          | Right of Bus                |
+| -------------------- | --------------------------- |
+| Clock                | Program Counter             |
+| Address Register     | Register A                  |
+| RAM                  | ALU                         |
+| Instruction Register | Register B                  |
+| Control Logic        | Output Register and Display |
+
+![Image of the CPU powered up.](./final-2.jpg)
+
+<iframe
+  width="100%"
+  style="aspect-ratio: 16/9"
+  src="https://www.youtube-nocookie.com/embed/Cvdp1IKIK0U?si=vmhhd6Xo2nqnW331"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+/>
+
+A test run of the CPU was held. It's a simple count up where Register A is set to zero and Register B holds the value of 1. The ALU is set to add, and the resulting value cycles thorugh the available output values.
+It's not a full fetch-decode-execute cycle of a program, but still a nice demonstration.
+
+![Image of the CPU with control lines installed.](./final-3.jpg)
+
+Every control line such as bus read, bus upload, and 2's complement is brought down to the bottom right corner to provide a convenient place for operation.
+
+![Image of the control wires.](./final-4.jpg)
+
+![Image of the CPU with each module labeled.](./final-5.jpg)

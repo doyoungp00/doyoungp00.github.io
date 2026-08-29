@@ -1,0 +1,44 @@
+---
+title: "Homemade 8-bit CPU [#5] - Program Counter"
+description: ""
+pubDate: "2023-03-24"
+heroImage: "./pc-1.jpg"
+tags: ["projects", "homemade-cpu"]
+---
+
+import ImageCaption from "@/components/ImageCaption.astro";
+import { Image } from "astro:assets";
+
+The Program Counter keeps track of which instruction should be run next. A single 74LS161 counter is used for this task.
+
+import ls161 from "./74LS161.png";
+
+<ImageCaption
+  src={ls161.src}
+  alt="Diagram of the 74LS161 4-bit Binary Counter."
+  style="height: 300px"
+/>
+
+The chip also allows an inital value to be set with input pins A thorugh D. Both T and P pins must be enabled for the counter to run.
+
+The counter was placed to the right of the bus interface, the four outputs tied so the counter value can be uploaded to the bus. The green jumper wire determines the upload enable. LEDs indicate counter value.
+
+import pc2 from "./pc-2.jpg";
+import pc3 from "./pc-3.jpg";
+import pc4 from "./pc-4.jpg";
+import pc5 from "./pc-5.jpg";
+import pc6 from "./pc-6.jpg";
+import pc7 from "./pc-7.jpg";
+
+<div class="col-3" style="gap: var(--space-2); margin-bottom: var(--space-2)">
+  <Image src={pc2} alt="" />
+  <Image src={pc3} alt="" />
+  <Image src={pc4} alt="" />
+</div>
+<div class="col-3" style="gap: var(--space-2)">
+  <Image src={pc5} alt="" />
+  <Image src={pc6} alt="" />
+  <Image src={pc7} alt="" />
+</div>
+
+Hooking Pin 2 up to the clock, the counter starts, overflowing back to `0000` after `1111`. Now the CPU will run instructions 0 through 15 repeatedly. The usage of a 4-bit counter limits the size of the program this CPU can run to 16 bytes, which is quite small.
