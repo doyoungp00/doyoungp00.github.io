@@ -12,6 +12,7 @@ export default defineConfig({
     "/": "/about",
   },
   fonts: [
+    // Global sans-serif font
     {
       provider: fontProviders.local(),
       name: "Pretendard",
@@ -28,6 +29,24 @@ export default defineConfig({
         ],
       },
     },
+    // Global serif font
+    {
+      provider: fontProviders.local(),
+      name: "Noto Serif KR",
+      cssVariable: "--font-noto-serif",
+      fallbacks: ["serif"],
+      display: "swap",
+      options: {
+        variants: [
+          {
+            src: ["./src/assets/fonts/NotoSerifKR-VariableFont_wght.woff2"],
+            weight: "100 900",
+            style: "normal",
+          },
+        ],
+      },
+    },
+    // Global monospace font
     {
       provider: fontProviders.local(),
       name: "D2Coding",
