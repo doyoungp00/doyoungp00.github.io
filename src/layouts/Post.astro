@@ -5,6 +5,7 @@ import FormattedDate from "@/components/FormattedDate.astro";
 import Header from "@/components/Header.astro";
 import ImageWithBackground from "@/components/ImageWithBackground.astro";
 import Tag from "@/components/Tag.astro";
+import TagIcon from "@/components/TagIcon.astro";
 import type paths from "@/pages/paths";
 import type { CollectionEntry } from "astro:content";
 
@@ -86,26 +87,7 @@ const { title, description, pubDate, updatedDate, heroImage, tags } =
               }
             </div>
             <div class="tags">
-              <svg
-                width="22px"
-                height="22px"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M11.5808 5.10265L21.3421 14.8639L13.8639 22.3421L4.10261 12.5808L3.73898 4.73901L11.5808 5.10265Z"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"></path>
-                <path
-                  d="M7 8L7 8.01"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"></path>
-              </svg>
+              <TagIcon size="22px" />
               {
                 tags?.length
                   ? tags.map((tag, idx) => (

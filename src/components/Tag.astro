@@ -1,14 +1,19 @@
 ---
+import paths from "@/pages/paths";
+
+interface Props {
+  name: string;
+}
+
 const { name } = Astro.props;
 ---
 
-<span class="tag">
+<a class="tag" href={`/${paths.tag.url}/${name}/`}>
   {name}
-</span>
+</a>
 <style>
   .tag {
     color: rgb(var(--gray));
-    cursor: pointer;
     text-decoration: dotted underline;
   }
 </style>

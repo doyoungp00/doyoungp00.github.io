@@ -1,0 +1,67 @@
+---
+import BaseHead from "@/components/BaseHead.astro";
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
+import PostList from "@/components/PostList.astro";
+import TagIcon from "@/components/TagIcon.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
+import paths from "@/pages/paths";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection(paths.posts.url);
+  const tags = [...new Set(posts.flatMap((post) => post.data.tags ?? []))];
+
+  return tags.map((tag) => ({
+    params: { tag },
+    props: { tag },
+  }));
+}
+
+interface Props {
+  tag: string;
+}
+
+const { tag } = Astro.props;
+
+const posts = (await getCollection(paths.posts.url))
+  .filter((post) => post.data.tags?.includes(tag))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={`${tag} — ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+    <style>
+      main {
+        width: 960px;
+        margin: 0 auto;
+      }
+      h4 {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: var(--space-4) 0;
+      }
+      @media (max-width: 720px) {
+        main {
+          width: 480px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <section>
+        <h4>
+          <TagIcon size="22px" />
+          {tag}
+        </h4>
+        <PostList posts={posts} />
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>
