@@ -38,7 +38,7 @@ import ls283 from "./74LS283.png";
 
 The 74LS283 is a 4-bit ALU, so chaining two will give an 8-bit ALU. The carry bit(Pin C0) just needs to go into the first input(Pin C4) of the second ALU. If a carry happens on the final eighth bit, no further actions will happen to handle this result. A carry flag on the CPU will be set to signal that an overflow happened.
 
-#### Subtraction by addition
+# Subtraction by addition
 
 Adders are named adders for a reason - they can only add. But subtractions can be done with two's complement. A binary value can be converted into two's complement by inverting each bit (`0`s to `1`s, `1`s to `0`s) then adding 1.
 In hardware, this is possible by running each digit through an XOR gate then adding one at the ALU's input.

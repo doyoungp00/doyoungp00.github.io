@@ -14,7 +14,7 @@ import { Image } from "astro:assets";
 Registers can temporarily hold data. Most commonly for storing values used in calculations.
 Specific registers exist for instructions, data, and addresses. For all other uses, general purpose registers are used.
 
-#### 4-bit registers
+# 4-bit registers
 
 import ls173Pinout from "./74LS173-pinout.png";
 import ls173 from "./74LS173.jpg";
@@ -41,7 +41,7 @@ Two 74LS173 4-bit registers are used to form an 8-bit register.
 
 In this case a control mechanism will decide if the register values are uploaded to the bus, so pins G1 and G2 are always grounded.
 
-#### Bus interface
+# Bus interface
 
 import ls245 from "./74LS245.png";
 
@@ -73,7 +73,7 @@ The value persists after being loaded into the register, after removing the grou
 
 After tidying up the wires, a register is complete. Clock signals have been color-coded into white. The CPU needs three registers - General Purpose Register A and B, and an Instruction Register(IR).
 
-#### Moving values between registers
+# Moving values between registers
 
 Through a bus, a value can be copied from one register to another.
 

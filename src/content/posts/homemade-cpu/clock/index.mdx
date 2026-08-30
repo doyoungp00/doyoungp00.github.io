@@ -8,7 +8,7 @@ tags: ["projects", "homemade-cpu"]
 
 import ImageCaption from "@/components/ImageCaption.astro";
 
-#### Overview
+# Overview
 
 The clock is one of the most basic yet important components of a CPU. Every action a CPU takes will be based on a clock pulse. A clock's job is to generate a pulse every set period, forming a square wave pattern.
 
@@ -26,7 +26,7 @@ The 555 offers a variable frequency. As the chip works by continuously charging 
 
 In this component, two 555 chips are used for different operation modes.
 
-#### Astable clock
+# Astable clock
 
 An astable(a-stable, meaning "not stable") clock has no resting, stable state. In other words, the clock will keep switching between high and low without human intervention.
 
@@ -59,7 +59,7 @@ Considering modern desktop processors run at 3GHz or higher, this CPU is 4 milli
 
 Providing power to the assembled clock, turning the resistor increases the resistance and makes the clock run slower. Reversing the resistor maxes it out at 720Hz, making the LED seem continuously lit to the eye.
 
-#### Monostable clock
+# Monostable clock
 
 A monostable(mono-, meaning "one") clock has only one stable state, high or low. This means the clock will eventually return to its stable state. In this case the monostable clock will be set to low by default, and pressing a button will make the clock emit a single pulse. This will allow manual CPU cycling, which will be very handy in later debugging.
 
@@ -68,7 +68,7 @@ A monostable(mono-, meaning "one") clock has only one stable state, high or low.
 The components may be different, but the basic mechanism is similar. The capacitor is charged when clicking the button, then drained through the 1M Ohm resistor.
 Just a button by itself would have the same effect, but the 555 debounces the signal.
 
-#### Bistable clock
+# Bistable clock
 
 A bistable clock has two stable states, and is comfortable with staying either high or low. This may sound like a regular switch, but the same debouncing problem exists in switches, hence the 555.
 
@@ -80,7 +80,7 @@ import latch555 from "./555-latch.png";
 
 ![The assembled bistable clock.](./clock-4.jpg)
 
-#### Combination logic
+# Combination logic
 
 There are now three kinds of clocks on the breadboard now. The bistable clock will be used to select between the astable and monostable clocks.
 Simple logic gates can be used to combine the clocks into one, with the selected clock's pulse being emitted.
