@@ -1,5 +1,5 @@
 import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
-import paths from "@/pages/paths";
+import paths from "@/utils/paths";
 import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
 

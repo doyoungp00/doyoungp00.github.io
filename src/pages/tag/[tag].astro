@@ -5,7 +5,7 @@ import Header from "@/components/Header.astro";
 import PostList from "@/components/PostList.astro";
 import TagIcon from "@/components/TagIcon.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
-import paths from "@/pages/paths";
+import paths from "@/utils/paths";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {

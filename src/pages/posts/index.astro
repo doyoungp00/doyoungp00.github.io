@@ -4,7 +4,7 @@ import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
 import PostList from "@/components/PostList.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
-import paths from "@/pages/paths";
+import paths from "@/utils/paths";
 import { getCollection } from "astro:content";
 
 const posts = (await getCollection(paths.posts.url)).sort(
