@@ -88,7 +88,9 @@ b {
   font-weight: 700;
 }
 a {
-  color: var(--accent);
+  color: rgb(var(--gray));
+  text-decoration: dotted underline;
+  transition: color 200ms ease-in-out;
 }
 a:hover {
   color: var(--accent);

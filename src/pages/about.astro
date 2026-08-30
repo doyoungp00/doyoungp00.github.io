@@ -17,9 +17,10 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
       .header-block {
         display: flex;
         width: 100%;
-        p {
+        .title {
           flex-basis: 50%;
           font-size: 1.4rem;
+          font-weight: 200;
           margin: 12px 0px;
           padding-right: 8px;
         }
@@ -31,20 +32,15 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
           text-align: right;
           font-size: 14px;
           padding-right: 8px;
-          a {
-            color: inherit;
-            text-decoration: dotted underline;
-            transition: color 200ms ease-in-out;
-          }
-          a:hover {
-            color: var(--accent);
-          }
         }
       }
       .section {
         display: flex;
         flex-direction: column;
         gap: 12px;
+        h3 {
+          margin-bottom: 0.5rem;
+        }
         table {
           width: 100%;
           table-layout: fixed;
@@ -70,6 +66,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
         margin-left: 16px;
         margin-bottom: 16px;
         h5 {
+          margin-bottom: 0.5rem;
           span {
             color: gray;
             font-size: 1rem;
@@ -91,7 +88,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
       <article>
         <h1 style="font-weight: 300;">Doyoung Park</h1>
         <div class="header-block">
-          <p style="font-weight: 200;">Junior Developer</p>
+          <h3 class="title">Junior Developer</h3>
           <div class="row">
             <span>
               <a href="mailto:doyoungp.00@gmail.com">doyoungp.00@gmail.com </a>
@@ -103,7 +100,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
         <hr />
 
         <div class="section">
-          <h4>Technical Skills</h4>
+          <h3>Technical Skills</h3>
           <table>
             <tbody>
               <tr>
@@ -135,12 +132,15 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
         <hr />
 
         <div class="section">
-          <h4>Projects</h4>
+          <h3>Projects</h3>
           <div class="subsection">
-            <h5>Mobile App Development</h5>
-            <a href="https://github.com/doyoungp00/FindPill"
-              >github.com/doyoungp00/FindPill</a
-            >
+            <h5>
+              Mobile App Development
+              <br />
+              <a href="https://github.com/doyoungp00/FindPill"
+                >github.com/doyoungp00/FindPill ↗</a
+              >
+            </h5>
             <p>A pill identifying app built on React Native.</p>
             <ul>
               <li>Role: Team Leader</li>
@@ -152,10 +152,13 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
             </ul>
           </div>
           <div class="subsection">
-            <h5>Mobile Web Development</h5>
-            <a href="https://github.com/TEAM-PIN-UP/FE-PIN-UP"
-              >github.com/TEAM-PIN-UP/FE-PIN-UP</a
-            >
+            <h5>
+              Mobile Web Development
+              <br />
+              <a href="https://github.com/TEAM-PIN-UP/FE-PIN-UP"
+                >github.com/TEAM-PIN-UP/FE-PIN-UP ↗</a
+              >
+            </h5>
             <p>A friends-only restaurant review service.</p>
             <ul>
               <li>Role: Frontend Development</li>
@@ -174,7 +177,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
         <hr />
 
         <div class="section">
-          <h4>Work Experience</h4>
+          <h3>Work Experience</h3>
           <div class="subsection">
             <h5>
               NexpotSolution
@@ -216,7 +219,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
         <hr />
 
         <div class="section">
-          <h4>Certifications</h4>
+          <h3>Certifications</h3>
           <CertCard
             title="AWS Certified Solutions Architect - Associate"
             organization="Amazon Web Services"
@@ -238,7 +241,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
         <hr />
 
         <div class="section">
-          <h4>Education</h4>
+          <h3>Education</h3>
           <div class="subsection">
             <h5>
               Software Engineering, Chonnam Nat'l Univ.
@@ -251,7 +254,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
         <hr />
 
         <div class="section">
-          <h4>Natural Languages</h4>
+          <h3>Natural Languages</h3>
           <ul>
             <li>English - Full professional proficiency</li>
             <li>Korean - Native</li>

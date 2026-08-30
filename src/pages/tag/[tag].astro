@@ -45,9 +45,7 @@ const posts = (await getCollection(paths.posts.url))
         padding: var(--space-4) 0;
       }
       .see-all {
-        color: rgb(var(--gray));
         font-size: 15px;
-        text-decoration: dotted underline;
         margin-top: auto;
       }
       @media (max-width: 720px) {
@@ -64,7 +62,7 @@ const posts = (await getCollection(paths.posts.url))
         <h5 class="tag-title">
           <TagIcon size="22px" />
           {tag}
-          <a href={`/${paths.tag.url}`} class="see-all">see all tags →</a>
+          <a href={`/${paths.tags.url}`} class="see-all">see all tags →</a>
         </h5>
         <PostList posts={posts} />
       </section>
