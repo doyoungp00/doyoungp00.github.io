@@ -32,17 +32,23 @@ const posts = (await getCollection(paths.posts.url))
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={`${tag} — ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+    <BaseHead title={`${tag} - ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
     <style>
       main {
         width: 960px;
         margin: 0 auto;
       }
-      h4 {
+      .tag-title {
         display: flex;
         align-items: center;
         gap: 8px;
         padding: var(--space-4) 0;
+      }
+      .see-all {
+        color: rgb(var(--gray));
+        font-size: 15px;
+        text-decoration: dotted underline;
+        margin-top: auto;
       }
       @media (max-width: 720px) {
         main {
@@ -55,10 +61,11 @@ const posts = (await getCollection(paths.posts.url))
     <Header />
     <main>
       <section>
-        <h4>
+        <h5 class="tag-title">
           <TagIcon size="22px" />
           {tag}
-        </h4>
+          <a href={`/${paths.tag.url}`} class="see-all">see all tags →</a>
+        </h5>
         <PostList posts={posts} />
       </section>
     </main>

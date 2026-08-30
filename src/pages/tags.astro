@@ -1,0 +1,63 @@
+---
+import BaseHead from "@/components/BaseHead.astro";
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
+import TagIcon from "@/components/TagIcon.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
+import paths from "@/utils/paths";
+import { getAllTags } from "@/utils/tags";
+
+const tags = await getAllTags();
+const totalTags = tags.reduce((total, tag) => total + tag.count, 0);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title={`All tags - ${SITE_TITLE}`}
+      description={SITE_DESCRIPTION}
+    />
+    <style>
+      .tag-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .tag-item a {
+        color: rgb(var(--gray));
+        font-size: 16px;
+        text-decoration: dotted underline;
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <section>
+        <h1>{paths.tags.name}</h1>
+        <h2>{paths.tags.name}</h2>
+        <h3>{paths.tags.name}</h3>
+        <h4>{paths.tags.name}</h4>
+        <h5>{paths.tags.name}</h5>
+        <h6>{paths.tags.name}</h6>
+        <p>
+          {tags.length} unique tags used {totalTags} times across all posts.
+        </p>
+        <ul>
+          {
+            tags.map((tag) => (
+              <li class="tag-item">
+                <TagIcon size="16px" />
+                <a href={`/${paths.tag.url}/${tag.name}`}>
+                  {tag.name} ({tag.count})
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>
