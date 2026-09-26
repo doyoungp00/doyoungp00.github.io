@@ -1,62 +1,267 @@
 ---
 import BaseHead from "@/components/BaseHead.astro";
+import CertCard from "@/components/CertCard.astro";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
+import SlashList from "@/components/SlashList.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "@/consts";
 ---
 
-<!doctype html>
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      hr {
+        margin: 24px 0px;
+      }
+      .header-block {
+        display: flex;
+        width: 100%;
+        .title {
+          flex-basis: 50%;
+          font-size: 1.4rem;
+          font-weight: 200;
+          margin: 12px 0px;
+          padding-right: 8px;
+        }
+        .row {
+          display: flex;
+          flex-direction: column;
+          flex-basis: 50%;
+          justify-content: center;
+          text-align: right;
+          font-size: 14px;
+          padding-right: 8px;
+        }
+      }
+      .section {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        h3 {
+          margin-bottom: 0.5rem;
+        }
+        table {
+          width: 100%;
+          table-layout: fixed;
+          margin-left: 16px;
+          scrollbar-width: none;
+        }
+        td:first-child {
+          width: min-content;
+          white-space: nowrap;
+          padding-right: 32px;
+          font-weight: 500;
+        }
+        p {
+          margin: 0px;
+        }
+        ul {
+          margin: 0px;
+        }
+      }
+      .subsection {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-left: 16px;
+        margin-bottom: 16px;
+        h5 {
+          margin-bottom: 0.5rem;
+          span {
+            color: gray;
+            font-size: 1rem;
+            margin-left: 32px;
+            display: inline-flex;
+            align-items: flex-end;
+          }
+        }
+        a {
+          font-size: 0.8rem;
+        }
+      }
+    </style>
   </head>
+
   <body>
     <Header />
     <main>
-      <h1>🧑‍🚀 Hello, Astronaut!</h1>
-      <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template. This template serves as a lightweight, minimally-styled starting
-        point for anyone looking to build a personal website, blog, or portfolio with
-        Astro.
-      </p>
-      <p>
-        This template comes with a few integrations already configured in your
-        <code>astro.config.mjs</code> file. You can customize your setup with
-        <a href="https://astro.build/integrations">Astro Integrations</a> to add tools
-        like Tailwind, React, or Vue to your project.
-      </p>
-      <p>Here are a few ideas on how to get started with the template:</p>
-      <ul>
-        <li>Edit this page in <code>src/pages/index.astro</code></li>
-        <li>
-          Edit the site header items in <code>src/components/Header.astro</code>
-        </li>
-        <li>
-          Add your name to the footer in <code>src/components/Footer.astro</code
-          >
-        </li>
-        <li>
-          Check out the included blog posts in <code>src/content/blog/</code>
-        </li>
-        <li>
-          Customize the blog post page layout in <code
-            >src/layouts/BlogPost.astro</code
-          >
-        </li>
-      </ul>
-      <p>
-        Have fun! If you get stuck, remember to
-        <a href="https://docs.astro.build/">read the docs</a>
-        or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-      </p>
-      <p>
-        Looking for a blog template with a bit more personality? Check out
-        <a href="https://github.com/Charca/astro-blog-template"
-          >astro-blog-template</a
-        >
-        by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-      </p>
+      <article>
+        <h1 style="font-weight: 300;">Doyoung Park</h1>
+        <div class="header-block">
+          <h3 class="title">Junior Developer</h3>
+          <div class="row">
+            <span>
+              <a href="mailto:doyoungp.00@gmail.com">doyoungp.00@gmail.com </a>
+            </span>
+            <span>Seongnam, South Korea</span>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h3>Technical Skills</h3>
+          <table>
+            <tbody>
+              <tr>
+                <td>Languages</td>
+                <td>
+                  <SlashList items={["C#", "TypeScript", "Java"]} />
+                </td>
+              </tr>
+              <tr>
+                <td>Frontend</td>
+                <td><SlashList items={["React", "Tailwind"]} /></td>
+              </tr>
+              <tr>
+                <td>Backend</td>
+                <td><SlashList items={["Spring Boot", "MySQL"]} /></td>
+              </tr>
+              <tr>
+                <td>Cloud</td>
+                <td><SlashList items={["AWS", "Firebase"]} /></td>
+              </tr>
+              <tr>
+                <td>Others</td>
+                <td><SlashList items={["Git", "Linux(Debian, FreeBSD)"]} /></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h3>Projects</h3>
+          <div class="subsection">
+            <h5>
+              Mobile App Development
+              <br />
+              <a href="https://github.com/doyoungp00/FindPill"
+                >github.com/doyoungp00/FindPill ↗</a
+              >
+            </h5>
+            <p>A pill identifying app built on React Native.</p>
+            <ul>
+              <li>Role: Team Leader</li>
+              <li>Developed the frontend application.</li>
+              <li>
+                Designed the system architecture with Firebase and Azure Custom
+                Vision to handle events in real-time and allow scalability.
+              </li>
+            </ul>
+          </div>
+          <div class="subsection">
+            <h5>
+              Mobile Web Development
+              <br />
+              <a href="https://github.com/TEAM-PIN-UP/FE-PIN-UP"
+                >github.com/TEAM-PIN-UP/FE-PIN-UP ↗</a
+              >
+            </h5>
+            <p>A friends-only restaurant review service.</p>
+            <ul>
+              <li>Role: Frontend Development</li>
+              <li>
+                Learned to collaborate with the Design and Backend teams,
+                implementing design and functional features.
+              </li>
+              <li>
+                Built the complex main map interface using Naver Maps and Kakao
+                Maps API.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h3>Work Experience</h3>
+          <div class="subsection">
+            <h5>
+              NexpotSolution
+              <span>Apr 2025 — CURRENT</span>
+            </h5>
+            <ul>
+              <li>Maintained a legacy product authentication web app.</li>
+              <li>
+                Developed MV-PDF, a raster image processing(RIP) program to
+                accelerate in-house variable data printing jobs.
+              </li>
+              <li>
+                MV-PDF reduced processing times by up to 98 percent,
+                accelerating a two-hour job down to three minutes.
+              </li>
+              <li>
+                Played a pivotal role in the signing of an MOU between SEIKO
+                EPSON and NexpotSolution through the MV-PDF project.
+              </li>
+            </ul>
+          </div>
+          <div class="subsection">
+            <h5>
+              H2CTLAB
+              <span>Summer Intern 2023</span>
+            </h5>
+            <ul>
+              <li>Joined a team of developers for a digital art exhibition.</li>
+              <li>Created a mobile web app for visitors to submit sketches.</li>
+              <li>
+                Contributed to the project further by developing Unity scripts
+                and the backend system to process and create art forms from
+                submitted sketches.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h3>Certifications</h3>
+          <CertCard
+            title="AWS Certified Solutions Architect - Associate"
+            organization="Amazon Web Services"
+            year="2026"
+            viewUrl="https://www.credly.com/badges/902ab9c4-ddb7-4f42-8162-327131e3d22e"
+          />
+          <CertCard
+            title="Computer Skills Proficiency, Level 1 (컴퓨터활용능력 1급)"
+            organization="Korea Chamber of Commerce and Industry (KCCI)"
+            year="2022"
+          />
+          <CertCard
+            title="Linux Master, Level 2 (리눅스마스터 2급)"
+            organization="Korea Information and Communications Promotion Association (KICA)"
+            year="2019"
+          />
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h3>Education</h3>
+          <div class="subsection">
+            <h5>
+              Software Engineering, Chonnam Nat'l Univ.
+              <span>Mar 2019 — Feb 2025</span>
+            </h5>
+            <p>Graduating GPA: 4.2 out of 4.5</p>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h3>Natural Languages</h3>
+          <ul>
+            <li>English - Full professional proficiency</li>
+            <li>Korean - Native</li>
+          </ul>
+        </div>
+      </article>
     </main>
     <Footer />
   </body>

@@ -8,9 +8,6 @@ import { defineConfig, fontProviders } from "astro/config";
 export default defineConfig({
   site: "https://doyoungp.com",
   integrations: [mdx(), sitemap()],
-  redirects: {
-    "/": "/about",
-  },
   fonts: [
     // Global sans-serif font
     {

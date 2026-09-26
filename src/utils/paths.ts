@@ -5,7 +5,6 @@ export interface PathEntry {
 
 const paths = {
   root: { name: "Home", url: "" },
-  about: { name: "About", url: "about" },
   posts: { name: "Posts", url: "posts" },
   tag: { name: "Tag", url: "tag" },
   tags: { name: "All Tags", url: "tags" },
