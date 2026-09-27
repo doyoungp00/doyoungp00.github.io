@@ -6,6 +6,7 @@
     "strictNullChecks": true,
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "moduleResolution": "bundler"
   }
 }

@@ -1,10 +1,9 @@
 ---
-import Search from "@/assets/icons/search.astro";
 import FormattedDate from "@/components/FormattedDate.astro";
 import ImageWithBackground from "@/components/ImageWithBackground.astro";
 import paths from "@/utils/paths";
+import PagefindConfig from "astro-pagefind/components/PagefindConfig.astro";
 import type { getCollection } from "astro:content";
-
 type Posts = Awaited<ReturnType<typeof getCollection<"posts">>>;
 interface Props {
   posts: Posts;
@@ -15,8 +14,8 @@ const posts: Posts = Astro.props.posts;
 <div class="tag-search-area">
   <a href={`/${paths.tags.url}`} class="see-all">see all tags →</a>
   <div class="search">
-    <input type="search" placeholder="Search..." aria-label="Search" required />
-    <Search class={"button"} size="28px" />
+    <PagefindConfig />
+    <pagefind-searchbox></pagefind-searchbox>
   </div>
 </div>
 <ul>
@@ -42,37 +41,18 @@ const posts: Posts = Astro.props.posts;
   .tag-search-area {
     display: flex;
     flex-direction: row;
-    align-items: end;
+    align-items: center;
     justify-content: space-between;
-    gap: var(--space-2) var(--space-4);
-    margin: 1rem 0;
-    a {
-      font-size: 16px;
-    }
+    gap: var(--space-4);
+    margin: var(--space-4) 0;
+  }
+  .see-all {
+    font-size: 16px;
   }
   .search {
     display: flex;
-    align-items: center;
-    justify-content: right;
-    width: 320px;
-
-    .button {
-      cursor: pointer;
-    }
-
-    input {
-      background-color: var(--gray-light);
-      padding: 4px;
-      border: none;
-      border-bottom: 1px solid rgb(var(--gray));
-      outline: none;
-      transition: box-shadow 300ms linear;
-      width: 100%;
-
-      &:focus {
-        box-shadow: 0 1.4px 0 rgb(var(--gray));
-      }
-    }
+    flex-grow: 1;
+    justify-content: end;
   }
   ul {
     display: flex;
@@ -130,9 +110,13 @@ const posts: Posts = Astro.props.posts;
   @media (max-width: 720px) {
     .tag-search-area {
       flex-direction: column;
+      align-items: end;
     }
     .search {
       width: 100%;
+      pagefind-searchbox {
+        width: 100%;
+      }
     }
     ul {
       gap: 0.75em;

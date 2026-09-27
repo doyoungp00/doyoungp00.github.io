@@ -1,15 +1,15 @@
 // @ts-check
 
 import mdx from "@astrojs/mdx";
-import sitemap from "@astrojs/sitemap";
-import { defineConfig, fontProviders } from "astro/config";
-
 import node from "@astrojs/node";
+import sitemap from "@astrojs/sitemap";
+import pagefind from "astro-pagefind";
+import { defineConfig, fontProviders } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://doyoungp.com",
-  integrations: [mdx(), sitemap()],
+  integrations: [mdx(), sitemap(), pagefind()],
 
   fonts: [
     // Global sans-serif font
