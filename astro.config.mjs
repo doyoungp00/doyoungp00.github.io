@@ -1,7 +1,6 @@
 // @ts-check
 
 import mdx from "@astrojs/mdx";
-import node from "@astrojs/node";
 import sitemap from "@astrojs/sitemap";
 import pagefind from "astro-pagefind";
 import { defineConfig, fontProviders } from "astro/config";
@@ -66,8 +65,4 @@ export default defineConfig({
       },
     },
   ],
-
-  adapter: node({
-    mode: "standalone",
-  }),
 });
